@@ -54,6 +54,24 @@ void QuickFind() {
   }
 }
 
+void QuickUnion() {
+  int i, j, p, q, id[N];
+  // id[i] = i at the start
+  for (i = 0; i < N; i++) {
+    id[i] = i;
+  }
+  while (cin >> p >> q) {
+    for (i = p; i != id[i]; i = id[i]) // find the root pointer of p
+      ;
+    for (j = q; j != id[j]; j = id[j]) // find the root pointer of q
+      ;
+    if (i == j) // if pointers are the same then the two objects are connected
+      continue;
+    id[i] = j; // otherwise we make a connection between root of p and q
+    cout << " " << p << " " << q << endl;
+  }
+}
+
 int main(int argc, char *argv[]) {
   QuickFind();
   return 0;
